@@ -1,0 +1,92 @@
+:root {
+  --bs-heading: var(--bs-black);
+  --image-primary-filter: invert(37%) sepia(63%) saturate(7681%)
+    hue-rotate(322deg) brightness(97%) contrast(95%);
+  --section-padding: 80px 0;
+  --MetaLinkMedium: "MetaLinkMedium";
+  --MetaLinkBold: "MetaLinkBold";
+  --MetaLinkSemiBold: "MetaLinkSemiBold";
+  --MetaLinkExtraBold: "MetaLinkExtraBold";
+}
+
+//####################
+// START IMPORT FILES
+// #####################
+
+@import "./assets/assets/sass/all_components";
+.MetaLinkMedium {
+  font-family: var(--MetaLinkMedium);
+}
+.MetaLinkBold {
+  font-family: var(--MetaLinkBold);
+}
+.MetaLinkSemiBold {
+  font-family: var(--MetaLinkSemiBold);
+}
+.MetaLinkExtraBold {
+  font-family: var(--MetaLinkExtraBold);
+}
+.primary-border-hover {
+  &:hover {
+    border-color: var(--bs-primary) !important;
+  }
+}
+.text-primary-hover {
+  &:hover {
+    --bs-primary-hover-opacity: 1;
+    .hover-this {
+      color: var(--bs-primary) !important;
+      opacity: var(--bs-primary-hover-opacity);
+    }
+  }
+}
+.text-white-hover {
+  &:hover {
+    .hover-this {
+      --bs-white-hover-opacity: 1;
+      color: var(--bs-white);
+      opacity: var(--bs-white-hover-opacity);
+    }
+  }
+}
+.bg-primary-hover {
+  &:hover {
+    --bs-bg-hover-opacity: 1;
+    background: rgba(
+      var(--bs-primary-rgb),
+      var(--bs-bg-hover-opacity)
+    ) !important;
+    img:not(.notfilter) {
+      filter: var(--image-primary-filter);
+    }
+  }
+}
+.hover-bg-gray {
+  --bs-bg-hover-color: var(--bs-gray-200);
+  &:hover {
+    background: var(--bs-bg-hover-color) !important;
+  }
+}
+.hover-bg-info {
+  --bs-bg-hover-color: var(--bs-info);
+  &:hover {
+    background: var(--bs-bg-hover-color);
+  }
+}
+//####################
+// END IMPORT FILES
+// #####################
+::-webkit-scrollbar {
+  width: 9px;
+  height: 0.6em;
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-primary);
+  // height: 1em;
+  border-radius: 100vw;
+  //border-radius: 35px 0px 0px 35px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}

@@ -1,0 +1,26 @@
+.accordionExample
+{
+    --bs-accordion-active-bg: rgba(29, 124, 216, 0.15);
+    
+}
+.buttonstyle{
+    --bs-accordion-btn-icon-width: 15px
+}
+.linkColour
+{
+    --bs-bg-hover-color: #f2f2f3
+}
+.linkColour2
+{
+    --bs-bg-hover-color: #d6d6d666
+}
+.hoverstyle
+{
+    --bs-bg-hover-color: var(--bs-gray-100)
+}
+
+.hoverColor:hover
+{
+   --bs-bg-hover-color: rgba(29, 124, 216, 0.15)
+}
+

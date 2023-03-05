@@ -1,0 +1,460 @@
+@font-face {
+  font-family: "MetaLinkMedium";
+  src: url(../../../vendor/fonts/MetaLinkMedium.woff2);
+}
+@font-face {
+  font-family: "MetaLinkBold";
+  src: url(../../../vendor/fonts/MetaLinkBold.woff2);
+}
+@font-face {
+  font-family: "MetaLinkSemiBold";
+  src: url(../../../vendor/fonts/MetaLinkSemiBold.woff2);
+}
+@font-face {
+  font-family: "MetaLinkExtraBold";
+  src: url(../../../vendor/fonts/MetaLinkExtraBold.woff2);
+}
+
+:root {
+  --input-padding: 15px;
+  --input-height: 42px;
+}
+html {
+  box-sizing: border-box;
+}
+
+body {
+  --bs-body-font-size: 16px;
+  --bs-body-font-weight: 500;
+  --bs-body-font-family: "MetaLinkMedium", sans-serif !important;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004) !important;
+  transition: background 0.3s ease;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  outline: none;
+  letter-spacing: 0.5px !important;
+}
+
+ul,
+ol {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+
+a {
+  text-decoration: none !important;
+  transition: 0.1s;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+svg {
+  transition: 0.1s;
+}
+
+section {
+  padding: var(--section-padding);
+  position: relative;
+}
+
+button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+p {
+  color: #7b7b7b;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+small,
+li,
+label {
+  color: var(--bs-heading);
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  display: none;
+  &[src],
+  &[data-src] {
+    display: block;
+  }
+}
+
+i {
+  line-height: normal;
+}
+
+// form setting
+span {
+  font-size: inherit;
+}
+
+label {
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+select,
+textarea {
+  min-height: var(--input-height);
+}
+
+select {
+  cursor: pointer;
+}
+
+.select-box {
+  width: 100%;
+}
+
+.form-check-input {
+  &:checked {
+    background-color: var(--bs-info);
+    border-color: var(--bs-info) !important;
+  }
+  &:focus {
+    border-color: var(--bs-primary);
+    box-shadow: none;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-control,
+.select-box {
+  --text-placeholder-color: #6a6a6a;
+  padding: 10px var(--input-padding);
+  background: white;
+  box-shadow: none;
+  border: 1px solid var(--bs-border-color);
+  &::placeholder {
+    color: var(--text-placeholder-color);
+  }
+  &:focus {
+    color: #71748d;
+    background-color: #fff;
+    border-color: var(--bs-primary);
+    outline: 0;
+    box-shadow: none;
+    &::placeholder {
+      color: var(--bs-primary);
+    }
+    i {
+      color: var(--bs-primary);
+    }
+  }
+}
+
+// end form setting
+// table setting
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
+  border-color: var(--bs-border-color);
+}
+
+// .table-hover>tbody>tr:hover>* {
+//     --bs-table-accent-bg: var(--table-hover-clr);
+//     color: var(--table-td-after-hover);
+// }
+.table > :not(:first-child) {
+  border-top: none;
+}
+
+// end table setting
+
+.column-spacing {
+  [class*="col-"] > div {
+    margin: 10px;
+  }
+}
+
+.content-spacing * + * {
+  margin-top: 2rem !important;
+}
+
+.collapsing {
+  height: 0;
+  overflow: hidden;
+  transition: 0.2s;
+}
+.not-last-border-line {
+  & > * {
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--bs-border-color) !important;
+    }
+  }
+}
+.bottom-line-spacing {
+  --bl-spacing: 5px;
+  & > * {
+    &:not(:last-child) {
+      margin-bottom: var(--bl-spacing);
+      padding-bottom: var(--bl-spacing);
+    }
+  }
+}
+
+.hb-line {
+  width: 70px;
+  height: 5px;
+  background: var(--bs-primary);
+  display: block;
+  margin-block: 9px;
+}
+
+// hover opacity
+@for $i from 1 through 9 {
+  .hover-opacity-0#{$i} {
+    &:hover {
+      opacity: #{"0.#{$i}"} !important;
+    }
+  }
+}
+.hover-opacity-1 {
+  opacity: 1 !important;
+}
+
+// shadow dots animate
+
+// flex
+@for $i from 1 through 10 {
+  .flex-#{$i} {
+    flex: $i;
+  }
+}
+
+@for $i from 1 through 15 {
+  .padding-inline-#{$i}vw {
+    padding-inline: $i + vw !important;
+  }
+}
+
+@for $i from 1 through 15 {
+  .padding-block-#{$i}vw {
+    padding-block: $i + vw !important;
+  }
+}
+
+/*############################3
+      Start border-radius
+ #########################3*/
+
+@for $i from 0 through 15 {
+  .border-radius-#{$i}px {
+    border-radius: $i +#{"px"};
+  }
+}
+
+/*############################3
+      End border-radius
+ #########################3*/
+
+$while-width: 5;
+@while $while-width <=100 {
+  .width-#{$while-width} {
+    width: $while-width +#{"%"};
+  }
+  $while-width: $while-width + 5;
+}
+
+$while-height: 10;
+@while $while-height <=100 {
+  .height-#{$while-height}vh {
+    height: $while-height + vh;
+  }
+  $while-height: $while-height + 10;
+}
+
+$while-height2: 1;
+@while $while-height2 <= 30 {
+  .height-#{$while-height2}rem {
+    height: $while-height2 + rem;
+  }
+  $while-height2: $while-height2 + 1;
+}
+
+@for $i from 10 through 100 {
+  .font-#{$i}px {
+    font-size: $i + px;
+  }
+}
+
+// sm
+@media screen and (min-width: 576px) {
+  $while-width: 5;
+  @while $while-width <=100 {
+    .width-sm-#{$while-width} {
+      width: $while-width +#{"%"};
+    }
+    $while-width: $while-width + 5;
+  }
+  $while-height: 10;
+  @while $while-height <=100 {
+    .height-sm-#{$while-height}vh {
+      height: $while-height + vh;
+    }
+    $while-height: $while-height + 10;
+  }
+  $while-height2: 1;
+  @while $while-height2 <= 30 {
+    .height-sm-#{$while-height2}rem {
+      height: $while-height2 + rem;
+    }
+    $while-height2: $while-height2 + 1;
+  }
+  @for $i from 10 through 100 {
+    .font-sm-#{$i}px {
+      font-size: $i + px;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-inline-sm-#{$i}vw {
+      padding-inline: $i + vw !important;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-block-sm-#{$i}vw {
+      padding-block: $i + vw !important;
+    }
+  }
+}
+
+// md
+@media screen and (min-width: 768px) {
+  $while-width: 5;
+  @while $while-width <=100 {
+    .width-md-#{$while-width} {
+      width: $while-width +#{"%"};
+    }
+    $while-width: $while-width + 5;
+  }
+  $while-height: 10;
+  @while $while-height <=100 {
+    .height-md-#{$while-height}vh {
+      height: $while-height + vh;
+    }
+    $while-height: $while-height + 10;
+  }
+  $while-height2: 1;
+  @while $while-height2 <= 30 {
+    .height-md-#{$while-height2}rem {
+      height: $while-height2 + rem;
+    }
+    $while-height2: $while-height2 + 1;
+  }
+  @for $i from 10 through 100 {
+    .font-md-#{$i}px {
+      font-size: $i + px;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-inline-md-#{$i}vw {
+      padding-inline: $i + vw !important;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-block-md-#{$i}vw {
+      padding-block: $i + vw !important;
+    }
+  }
+}
+
+// lg
+@media screen and (min-width: 992px) {
+  $while-width: 5;
+  @while $while-width <=100 {
+    .width-lg-#{$while-width} {
+      width: $while-width +#{"%"};
+    }
+    $while-width: $while-width + 5;
+  }
+  $while-height: 10;
+  @while $while-height <=100 {
+    .height-lg-#{$while-height}vh {
+      height: $while-height + vh;
+    }
+    $while-height: $while-height + 10;
+  }
+  $while-height2: 1;
+  @while $while-height2 <= 30 {
+    .height-lg-#{$while-height2}rem {
+      height: $while-height2 + rem;
+    }
+    $while-height2: $while-height2 + 1;
+  }
+  @for $i from 10 through 100 {
+    .font-lg-#{$i}px {
+      font-size: $i + px;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-inline-lg-#{$i}vw {
+      padding-inline: $i + vw !important;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-block-lg-#{$i}vw {
+      padding-block: $i + vw !important;
+    }
+  }
+}
+
+// xl
+@media screen and (min-width: 1200px) {
+  $while-width: 5;
+  @while $while-width <=100 {
+    .width-xl-#{$while-width} {
+      width: $while-width +#{"%"};
+    }
+    $while-width: $while-width + 5;
+  }
+  $while-height: 10;
+  @while $while-height <=100 {
+    .height-xl-#{$while-height}vh {
+      height: $while-height + vh;
+    }
+    $while-height: $while-height + 10;
+  }
+  $while-height2: 1;
+  @while $while-height2 <= 30 {
+    .height-xl-#{$while-height2}rem {
+      height: $while-height2 + rem;
+    }
+    $while-height2: $while-height2 + 1;
+  }
+  @for $i from 10 through 100 {
+    .font-xl-#{$i}px {
+      font-size: $i + px;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-inline-xl-#{$i}vw {
+      padding-inline: $i + vw !important;
+    }
+  }
+  @for $i from 1 through 15 {
+    .padding-block-xl-#{$i}vw {
+      padding-block: $i + vw !important;
+    }
+  }
+}

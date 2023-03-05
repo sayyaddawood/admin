@@ -1,0 +1,30 @@
+.dataTables_length {
+  display: none;
+}
+.cover-datatable {
+  .dataTables_scroll {
+    margin-bottom: 2rem;
+  }
+  thead {
+    tr {
+      th {
+        opacity: 0.6;
+      }
+    }
+  }
+  tbody {
+    tr {
+      td {
+        font-size: 14px;
+      }
+    }
+  }
+  .pagination {
+    --bs-pagination-color: var(--bs-info);
+    --bs-pagination-active-bg: var(--bs-info);
+    --bs-pagination-active-border-color: var(--bs-info);
+    --bs-pagination-hover-color: var(--bs-info);
+    --bs-pagination-focus-color: var(--bs-info);
+    --bs-pagination-focus-box-shadow: rgb(var(--bs-info-rgb), 0.25);
+  }
+}

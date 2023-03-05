@@ -1,0 +1,40 @@
+.navStyle
+{
+ --bs-border-width: 6px;
+} 
+.imgStyle
+{
+     width: 150px;
+     mix-blend-mode: screen;
+} 
+.divStyle
+{
+    --bs-dropdown-bg:  var(--bs-dark); z-index: 99999
+}
+
+.imgStyle2
+{
+    width: 45px; 
+    border-top-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.footerImg
+{
+    width: 180px;
+    mix-blend-mode: screen;
+}
+                                               
+.transInput
+{
+    background: #262626;
+    color: #989898; 
+    --bs-border-width: 5px; 
+    transform: skewX(-12deg);
+    min-height:48px;
+}
+.svgStyle{
+    enable-background:new 0 0 1000 1000; 
+    fill: #989898;
+}  
+
