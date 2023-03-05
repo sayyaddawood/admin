@@ -1,0 +1,27 @@
+.navbar-nav {
+  .nav-caret {
+    border-left: solid 10px transparent;
+    border-right: solid 10px transparent;
+    border-bottom: solid 20px var(--bs-primary);
+    height: 0;
+    width: 0px;
+    display: none;
+  }
+  .nav-link {
+    &.show {
+      color: var(--bs-primary) !important;
+      i {
+        transform: rotate(180deg) translateY(2px);
+        display: inline-block;
+      }
+      & ~ div > .nav-caret {
+        display: block;
+      }
+    }
+  }
+}
+.caret-none {
+  &::after {
+    display: none;
+  }
+}
