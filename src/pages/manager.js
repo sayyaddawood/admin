@@ -28,7 +28,7 @@ const manager= () => {
     useEffect(() => {
         getManagerdatabyId(id)
         getManagercareer(id)
-          }, []);  
+          }, [id]);  
         
         console.log(managercareer) 
   return (

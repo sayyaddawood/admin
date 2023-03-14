@@ -25,7 +25,7 @@ useEffect(() => {
     getPlayerdatabyId(id)
     getPlayermedia(id)
     getPlayertransfarhistory(id)
-      }, []);   
+      }, [id]);   
   return (
     <div>
     <div className="py-9 padding-inline-2vw padding-inline-lg-10vw bg-dark">
