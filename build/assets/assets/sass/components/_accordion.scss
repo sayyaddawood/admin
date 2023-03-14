@@ -1,0 +1,19 @@
+.accordion {
+  button {
+    &:hover {
+      background: var(--bs-gray-100);
+    }
+  }
+  .accordion-body {
+    background: var(--bs-gray-100);
+  }
+}
+
+// copy board
+.copyboard {
+  &[aria-expanded="true"] {
+    & > svg {
+      transform: rotate(180deg);
+    }
+  }
+}
