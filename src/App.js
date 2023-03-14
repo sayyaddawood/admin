@@ -9,6 +9,7 @@ import Footer from './Components/NavComponents/footer';
 import Main from './pages/main';
 import Player from './pages/player';
 import Manager from './pages/manager';
+import Competition from './pages/competition';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
          <Route exact to path="/" component={Main} />
          <Route exact to path="/player/:id" component={Player} />
          <Route exact to path="/manager/:id" component={Manager} />
+         <Route exact to path="/competition/:id/:Sid" component={Competition} />
+
       </Switch>
       <Footer />
      </BrowserRouter>

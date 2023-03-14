@@ -29,8 +29,14 @@ export const ApiProvider = ({children}) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [message, setmessage] = useState('');
 
- 
 
+  const [leaguestandingData,setleaguestandingData]=useState([])
+  const [leaguestandingTourInfo,setleaguestandingTourInfo]=useState([])
+  const [leagueCategoryInfo,setleagueCategoryInfo]=useState([])
+  const [leagueMatchesdata,setleagueMatchesdata]=useState([])
+
+
+ 
 const getPlayerdatabyId= (id) => {
   setIsLoading(true)
 const options = {
@@ -276,7 +282,47 @@ const options = {
   }
 
 
+  const getleaguetandingdata = (id,type,sid) => {
+  
+    const options = {
+      method: 'GET',
+      url: BASE_URL+'seasons/standings',
+      params: {standing_type: type , seasons_id: sid, unique_tournament_id: id},
+      headers: header()
+    }
 
+    axios.request(options).then(function (response) {
+      if(response.status==200)
+      {
+       setleaguestandingTourInfo(response.data.data[0].tournament.uniqueTournament)
+       setleagueCategoryInfo(response.data.data[0].tournament.category)
+       setleaguestandingData(response.data.data[0].rows)
+      }
+    }).catch(function (error) {
+      console.error(error);
+    });  
+
+};
+
+const getMatchdataBytourandSeasonIds = (id,sid) => {
+     const options = {
+      method: 'GET',
+      url: BASE_URL+'seasons/events',
+      params: {
+        course_events: 'last',page: '0',seasons_id: sid,unique_tournament_id: id
+      },
+      headers: header()
+    }
+
+    axios.request(options).then(function (response) {
+      if(response.status==200)
+      {
+        setleagueMatchesdata(response.data.data.events)
+      }
+    }).catch(function (error) {
+      console.error(error);
+    });
+};
 
   const MemberVerification = () => {
       alert("hello ssssssss");
@@ -297,7 +343,13 @@ const options = {
         getTopLegue,
         getPlayertransfarhistory,
         getManagercareer,
-
+        getleaguetandingdata,
+        getMatchdataBytourandSeasonIds,
+        
+        leagueMatchesdata,
+        leagueCategoryInfo,
+        leaguestandingTourInfo,
+        leaguestandingData,
         playertransferinfo,
         managercareer,
         tournamentdata,

@@ -29,9 +29,9 @@ const getlist = (id) => {
                                         
                                         <span className=" text-danger">
                                         {/* <?php echo $i ?> */}
-                                        1
+                                        {/* 1 */}
                                         </span>
-                                        /2
+                                        {/* /2 */}
                                         {/* <?php echo $i ?> */}
                                         </span>
                                 </button>

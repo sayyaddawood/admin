@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useContext,useState,useEffect } from 'react'
 import PlayerInfo from "./playerInfo";
 // import UsersContext from "../store/users-context";
 const PlayerList = () => {
+    const [playersdata,setplayersdata]=useState([])
+    const [managersdata,setmanagersdata]=useState([])
+    const [teamsdata,setteamsdata]=useState([])
+    const [competitionsdata,setcompetitionsdata]=useState([])
+    async function fetchData() {
+        try {
+          const response = await fetch('https://empecto.com/demo/livestats/api.php?tab=get_menu');
+          const data = await response.json();
+          setplayersdata(data.players)
+          setmanagersdata(data.managers)
+          setteamsdata(data.teams)
+          setcompetitionsdata(data.competitions)
+          console.log(data)
+        } catch (error) {
+          console.error(error);
+        }
+      }
+     
+      
+      
+      
+      
+   useEffect(() => {
+    fetchData()
+       }, []);
+    
 
     return (
         <ul className="navbar-nav me-auto mb-2 mb-lg-0 gap-2 gap-lg-6">
@@ -13,11 +39,12 @@ const PlayerList = () => {
                             <div className=" divStyle dropdown-menu dropdown-menu-dark border-0 rounded-0 mt-2" >
                                 
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">
-                                <PlayerInfo  Path ="/player" id="12994"/>
-                                <PlayerInfo  Path ="/player" id="12994"/>
-                                <PlayerInfo  Path ="/player" id="12994"/>
-                                <PlayerInfo  Path ="/player" id="12994"/>
-                                
+                                {
+                                  playersdata.map((data , index) => (
+                                        <PlayerInfo  Path ="/player" id={data.id} name={data.name} team={data.team_name} data={data} />
+                                        ))     
+                                }
+
                             </div>
                         </div>
                     </li>
@@ -29,10 +56,12 @@ const PlayerList = () => {
                             </div>
                             <div className=" divStyle dropdown-menu dropdown-menu-dark border-0 rounded-0 mt-2" >
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">
-                                <PlayerInfo  Path ="/manager" id="52829"/>
-                                <PlayerInfo  Path ="/manager" id="52829"/>
-                                <PlayerInfo  Path ="/manager" id="52829"/>
-                                <PlayerInfo  Path ="/manager" id="52829"/>
+                               
+                                {
+                                 managersdata.map((data , index) => (
+                                        <PlayerInfo  Path ="/manager" id={data.id} name={data.name} team={data.team_name} data={data} />
+                                        ))     
+                                }
                                
                                 </div>
                             </div>
@@ -45,11 +74,12 @@ const PlayerList = () => {
                             </div>
                             <div className="dropdown-menu dropdown-menu-dark border-0 rounded-0 mt-2 divStyle" >
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">  
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
+                                {
+                                 teamsdata.map((data , index) => (
+                                        <PlayerInfo  Path ="/team" flag={data.parent_flag} id={data.id} name={data.name} team={data.team_name} data={data} />
+                                        ))     
+                                 }
+                               
                                
                                 </div>
                             </div>
@@ -62,11 +92,11 @@ const PlayerList = () => {
                             </div>
                             <div className="dropdown-menu dropdown-menu-dark border-0 rounded-0 mt-2 divStyle" >
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
-                                <PlayerInfo />
+                                {
+                                 competitionsdata.map((data , index) => (
+                                        <PlayerInfo  Path ="/competition" pic={data.image} id={data.id} name={data.name} team={data.team_name} data={data}  Sid="37036"/>
+                                        ))     
+                                 }
                                 </div>
                             </div>
                         </li>
