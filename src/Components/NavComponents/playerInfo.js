@@ -1,7 +1,9 @@
-import React from "react";
+
+import React, { useContext,useEffect } from 'react'
 import { Link } from "react-router-dom";
 // import UsersContext from "../store/users-context";
-const PlayerInfo = ({Path,id,name,team,pic,flag,Sid}) => {
+const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid}) => {
+
    let path= `${Path}/${id}`
    let flagUrl="https://www.sofascore.com/static/images/flags/au.png"
    let image ="https://api.sofascore.app/api/v1/player/"+id+"/image"
@@ -9,17 +11,23 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Sid}) => {
    {
     image ="https://api.sofascore.app/api/v1/unique-tournament/"+id+"/image"
    }
-   if(flag!=undefined)
+   if(Tid!=undefined)
    {
-    image ="https://api.sofascore.app/api/v1/team/"+id+"/image"
+
+    path=`${Path}/${Tid}`
+    image ="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
     flagUrl="https://www.sofascore.com/static/images/flags/"+flag
    }
-   https://api.sofascore.app/api/v1/unique-tournament/17/image
-  // const usersCtx = useContext(UsersContext);
+   if(Mid!=undefined)
+   {
+    path=`${Path}/${Mid}`
+    image ="https://api.sofascore.app/api/v1/manager/"+Mid+"/image"
+   }
   if(Sid!=undefined)
   {
     path=`${Path}/${id}/${Sid}`
   }
+ 
   return (
 <div>
     <Link to={path}  className=" text-primary-hover" >

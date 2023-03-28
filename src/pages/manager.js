@@ -24,20 +24,19 @@ const manager= () => {
     flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
     }
 
-    const {id} =useParams()     
+    const {Mid} =useParams()     
     useEffect(() => {
-        getManagerdatabyId(id)
-        getManagercareer(id)
-          }, [id]);  
+        getManagerdatabyId(Mid)
+        getManagercareer(Mid)
+          }, [Mid]);  
         
-        console.log(managercareer) 
   return (
     <div>
     <div className="py-9 padding-inline-2vw padding-inline-lg-10vw bg-dark">
         <div className="row justify-content-between gap-4">
             <div className="col-lg-6">
                 <div className="d-flex align-items-start  gap-5 flex-wrap ">
-                    <img src={"https://api.sofascore.app/api/v1/player/"+managerInfo.formerPlayerId+"/image"} alt="" 
+                    <img src={"https://api.sofascore.app/api/v1/manager/"+managerInfo.id+"/image"} alt="" 
                     className="border border-1 border-primary imgStyle" 
                     />
                     <img src={flagUrl} alt="" style={{width: '60px'}}/>

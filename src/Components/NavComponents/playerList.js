@@ -1,5 +1,6 @@
 import React, { useContext,useState,useEffect } from 'react'
 import PlayerInfo from "./playerInfo";
+
 // import UsersContext from "../store/users-context";
 const PlayerList = () => {
     const [playersdata,setplayersdata]=useState([])
@@ -14,7 +15,6 @@ const PlayerList = () => {
           setmanagersdata(data.managers)
           setteamsdata(data.teams)
           setcompetitionsdata(data.competitions)
-          console.log(data)
         } catch (error) {
           console.error(error);
         }
@@ -59,7 +59,7 @@ const PlayerList = () => {
                                
                                 {
                                  managersdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/manager" id={data.id} name={data.name} team={data.team_name} data={data} />
+                                        <PlayerInfo  Path ="/manager" Mid={data.id} name={data.name} team={data.team_name} data={data} />
                                         ))     
                                 }
                                
@@ -76,7 +76,7 @@ const PlayerList = () => {
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">  
                                 {
                                  teamsdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/team" flag={data.parent_flag} id={data.id} name={data.name} team={data.team_name} data={data} />
+                                        <PlayerInfo  Path ="/team" flag={data.parent_flag} Tid={data.id} name={data.name} team={data.team_name} data={data} />
                                         ))     
                                  }
                                

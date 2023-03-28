@@ -1,6 +1,6 @@
 import React, {createContext,useContext, useEffect, useState} from 'react';
 import axios from 'axios';
-import {BASE_URL,header,findDuplicates } from '../UserComponents/Common';
+import {BASE_URL,BASE_URL2,header,findDuplicates } from '../UserComponents/Common';
 export const ApiContext = createContext();
 export const ApiProvider = ({children}) => {
 
@@ -34,9 +34,22 @@ export const ApiProvider = ({children}) => {
   const [leaguestandingTourInfo,setleaguestandingTourInfo]=useState([])
   const [leagueCategoryInfo,setleagueCategoryInfo]=useState([])
   const [leagueMatchesdata,setleagueMatchesdata]=useState([])
+  const [teamStatisticsData,setteamStatisticsData]=useState([])
+  const [playerStatisticsData,setplayerStatisticsData]=useState([])
+  const [seasonsData,setseasonsData]=useState([])
 
 
- 
+  const [teamSeasonStanding,setteamSeasonStanding]=useState([])
+  const [teamInfodata,setteamInfodata]=useState([])
+  const [teamCountry,setteamCountry]=useState([])
+  const [teamManagerInfo,setteamManagerInfo]=useState([])
+  const [teamVenueData,setteamVenueData]=useState([])
+  const [teamPlayer,setteamPlayer]=useState([])
+  const [Players,setPlayers]=useState([])
+  const [teamtournamentdata,setteamtournamentdata]=useState([])
+  const [teamEventData,setteamEventData]=useState([])
+
+   
 const getPlayerdatabyId= (id) => {
   setIsLoading(true)
 const options = {
@@ -324,6 +337,354 @@ const getMatchdataBytourandSeasonIds = (id,sid) => {
     });
 };
 
+
+// const getPlayerStatistics = (id,Sid) => {
+//   const options = {
+//     method: 'GET',
+//     url:BASE_URL2+'unique-tournament/'+id+'/season/'+Sid+'/statistics?limit=20&order=-rating&offset=20&accumulation=total&group=summary',
+//   }
+//   axios.request(options).then(function (response) {
+//     if(response.status==200)
+//     {
+//      setplayerStatisticsData(response.data.results)
+//     }
+//   }).catch(function (error) {
+//     console.error(error);
+//   });
+// };
+
+
+
+
+const getPlayerStatistics = (id,Sid) => {
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'seasons/players-statistics/result',
+    params: {
+      unique_tournament_id: id,
+      seasons_id: Sid,
+      seasons_statistics_type: 'overall'
+    },
+    headers: header()
+  }
+  let  playerStatistics = [];
+  let  tackles=[]; 
+  let  goals=[];
+  let  assists=[];
+  let  EXgoals=[];
+  let  successfulDribbles=[];
+  let  accuratePasses=[];
+
+  axios.request(options).then(function (response) {
+    if(response.status==200)
+    {
+      
+      for (let i = 0; i < response.data.data.rating.length ; i++) {
+        for (let j = 0; j < response.data.data.rating.length ; j++) {  
+        if(response.data.data.rating[i].player.id===response.data.data.tackles[j].player.id)
+            tackles.push(response.data.data.tackles[j].statistics.tackles)
+        if(response.data.data.rating[i].player.id===response.data.data.goals[j].player.id)
+            goals.push(response.data.data.goals[j].statistics.goals)
+        if(response.data.data.rating[i].player.id===response.data.data.accuratePasses[j].player.id)
+            accuratePasses.push(response.data.data.accuratePasses[j].statistics.accuratePassesPercentage)   
+        if(response.data.data.rating[i].player.id===response.data.data.assists[j].player.id)
+             assists.push(response.data.data.assists[j].statistics.assists)           
+        // if(response.data.data.avgRating[i].team.id===response.data.data.goalsConceded[j].team.id)
+        //     goalsConceded.push(response.data.data.goalsConceded[j].statistics.goalsConceded)
+        if(response.data.data.rating[i].player.id===response.data.data.successfulDribbles[j].player.id)
+           successfulDribbles.push(response.data.data.successfulDribbles[j].statistics.successfulDribbles)
+          
+         }
+        if(tackles[i]==undefined)
+           tackles.push(0)
+        if(goals[i]==undefined)
+            goals.push(0)  
+        if(accuratePasses[i]==undefined)
+           accuratePasses.push(0)   
+        if(successfulDribbles[i]==undefined)
+           successfulDribbles.push(0)    
+        if(assists[i]==undefined)
+            assists.push(0)    
+           
+           
+         playerStatistics.push({
+          teamId:response.data.data.rating[i].team.id,
+          teamName:response.data.data.rating[i].team.name,
+          Rating:response.data.data.rating[i].statistics.rating,
+          playerName:response.data.data.rating[i].player.name,
+          playerId:response.data.data.rating[i].player.id,
+          tackles:tackles[i],
+          goals:goals[i],
+          assists:assists[i],
+          expectedgoals:"undefined",
+          successfulDribbles:successfulDribbles[i],
+          accuratePasses:accuratePasses[i],
+         }) 
+         
+       
+      }
+      setplayerStatisticsData(playerStatistics)
+    }
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
+const getTeamStatistics = (id,Sid) => {
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'seasons/teams-statistics/result',
+    params: {
+      seasons_id: Sid,
+      seasons_statistics_type: 'overall',
+      unique_tournament_id: id,
+    },
+    headers: header()
+  }
+  let  teamStatistics = [];
+  let  tackles=[]; 
+  let  goalsScored=[];
+  let  goalsConceded=[];
+  let  successfulDribbles=[];
+  let  accuratePasses=[];
+
+  axios.request(options).then(function (response) {
+    if(response.status==200)
+    {
+      for (let i = 0; i < response.data.data.avgRating.length ; i++) {
+     
+        for (let j = 0; j < response.data.data.avgRating.length ; j++) {  
+
+         if(response.data.data.avgRating[i].team.id===response.data.data.tackles[j].team.id)
+           tackles.push(response.data.data.tackles[j].statistics.tackles)
+         if(response.data.data.avgRating[i].team.id===response.data.data.goalsScored[j].team.id)
+          goalsScored.push(response.data.data.goalsScored[j].statistics.goalsScored)
+         if(response.data.data.avgRating[i].team.id===response.data.data.goalsConceded[j].team.id)
+          goalsConceded.push(response.data.data.goalsConceded[j].statistics.goalsConceded)
+         if(response.data.data.avgRating[i].team.id===response.data.data.successfulDribbles[j].team.id)
+         successfulDribbles.push(response.data.data.successfulDribbles[j].statistics.successfulDribbles)
+         if(response.data.data.avgRating[i].team.id===response.data.data.accuratePasses[j].team.id)
+          accuratePasses.push(response.data.data.accuratePasses[j].statistics.accuratePasses)
+         }     
+        
+         teamStatistics.push({
+          teamId:response.data.data.avgRating[i].team.id,
+          teamName:response.data.data.avgRating[i].team.name,
+          avgRating:response.data.data.avgRating[i].statistics.avgRating,
+          tackles:tackles[i],
+          goalsScored:goalsScored[i],
+          goalsConceded:goalsConceded[i],
+          successfulDribbles:successfulDribbles[i],
+          accuratePasses:accuratePasses[i],
+         }) 
+
+         setteamStatisticsData(teamStatistics) 
+        
+      }
+      
+    }
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
+const getFactSeasondata = (id,Sid) => {
+
+  const options = {
+    method: 'GET',
+    url:  BASE_URL+'seasons/data',
+    params: {unique_tournament_id: id, seasons_id: Sid},
+    headers:header()
+  }; 
+  axios.request(options).then(function (response) {
+    if(response.status==200)
+    {
+       setseasonsData(response.data.data)
+        
+      }
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
+
+const getTeamdatabyid = (Tid) => {
+
+  const options = {
+    method: 'GET',
+    url:BASE_URL+'teams/data',
+    params: {team_id: Tid},
+    headers:header()
+  };
+
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {
+         
+      setteamInfodata(response.data.data)
+      setteamCountry(response.data.data.country)
+      setteamManagerInfo(response.data.data.manager)
+      setteamVenueData({cityName:response.data.data.venue.city.name,
+       countryName:response.data.data.venue.country.name,
+       stadium:response.data.data.venue.stadium.name,
+       capacity:response.data.data.venue.stadium.capacity
+      })                    
+        
+      }
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
+const getTeamSeasonStanding = (Tid) => {
+
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'teams/standings/seasons',
+    params: {team_id: Tid},
+    headers:header()
+  };
+
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {    
+      setteamSeasonStanding(response.data.data)                 
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+const getTeamplayer = (Tid) => {
+  setIsLoading(true)
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'teams/players',
+    params: {team_id: Tid},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {
+  
+      setteamPlayer(response.data.data)     
+      setPlayers(response.data.data.players)   
+      setIsLoading(false)          
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+const getteamtournaments = (Tid) => {
+ 
+
+  const options = {
+    method: 'GET',
+    url:  BASE_URL+'teams/current-tournaments',
+    params: {team_id: Tid},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+    if(response.status==200)
+    {
+     console.log(response.data.data)
+     setteamtournamentdata(response.data.data)
+    
+    }
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+ const getteamEvent = (Tid) => {
+  setIsLoading(true)
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'teams/events',
+    params: {team_id: Tid, page: '0', course_events: 'last'},
+    headers:header()
+  };
+  let  tourName = [];
+
+  axios.request(options).then(function (response) {
+    
+    if(response.status==200)
+    {
+      
+        for (let i = 0; i < response.data.data.events.length ; i++) {
+          tourName.push(response.data.data.events[i].tournament)
+        }
+        if(tourName!=null && tourName!=[])
+        {
+               let tourdata = [];  
+               let uniqueObject = {};
+            
+               for (let i in tourName) {
+                  let objTitle = tourName[i]['name'];
+                   uniqueObject[objTitle] = tourName[i];
+               }
+               
+               for ( let i in uniqueObject) {
+                var matchdata=[]
+                for(let j in response.data.data.events) {
+                  if(response.data.data.events[j].tournament.name == uniqueObject[i].name && 
+                    response.data.data.events[j].tournament.category.id==uniqueObject[i].category.id)
+                     { matchdata.push(response.data.data.events[j])}
+                  }
+                tourdata.push({tourdata:uniqueObject[i],matchdata})
+               }
+               setteamEventData(tourdata)
+               setIsLoading(false)
+             }
+
+    }
+    
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+// const getteamdata = (id,Sid,type) => {
+//   const options = {
+//     method: 'GET',
+//     url:BASE_URL2+'unique-tournament/17/season/41886/events/next/1',
+//   }
+//   axios.request(options).then(function (response) {
+//     if(response.status==200)
+//     {
+//      console.log(response.data)
+    
+//     }
+//   }).catch(function (error) {
+//     console.error(error);
+//   });
+// };
+
+
+
+
+
+
+
+
+
+
+
+
   const MemberVerification = () => {
       alert("hello ssssssss");
   };
@@ -345,7 +706,27 @@ const getMatchdataBytourandSeasonIds = (id,sid) => {
         getManagercareer,
         getleaguetandingdata,
         getMatchdataBytourandSeasonIds,
-        
+        getTeamStatistics,
+        getPlayerStatistics,
+        getFactSeasondata,
+        getTeamdatabyid,
+        getTeamSeasonStanding, 
+        getTeamplayer,
+        getteamtournaments,
+        getteamEvent,
+          
+        teamEventData,
+        teamtournamentdata,
+        Players, 
+        teamPlayer,
+        teamSeasonStanding,
+        teamVenueData,
+        teamManagerInfo,
+        teamCountry,
+        teamInfodata,
+        seasonsData,
+        playerStatisticsData,
+        teamStatisticsData,
         leagueMatchesdata,
         leagueCategoryInfo,
         leaguestandingTourInfo,

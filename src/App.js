@@ -10,6 +10,7 @@ import Main from './pages/main';
 import Player from './pages/player';
 import Manager from './pages/manager';
 import Competition from './pages/competition';
+import Team from './pages/teams';
 
 function App() {
   return (
@@ -21,11 +22,11 @@ function App() {
        <Switch>
          <Route exact to path="/" component={Main} />
          <Route exact to path="/player/:id" component={Player} />
-         <Route exact to path="/manager/:id" component={Manager} />
+         <Route exact to path="/manager/:Mid" component={Manager} />
          <Route exact to path="/competition/:id/:Sid" component={Competition} />
-
+         <Route exact to path="/team/:Tid" component={Team} />
       </Switch>
-      <Footer />
+      <Footer/>
      </BrowserRouter>
        
     </ApiProvider>

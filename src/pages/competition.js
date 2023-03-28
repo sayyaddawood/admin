@@ -18,6 +18,10 @@ const competition= () => {
         leagueCategoryInfo,
         getMatchdataBytourandSeasonIds,
         leagueMatchesdata,
+        getPlayerStatistics,
+        playerStatisticsData,
+        getFactSeasondata,
+        seasonsData,
     } = useContext(ApiContext);
  let flagUrl=""
  if(leagueCategoryInfo.alpha2!=undefined&& leagueCategoryInfo.alpha2!= null)
@@ -26,9 +30,13 @@ const competition= () => {
  let  result = flagName.toLowerCase()
  flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
  }
+
+
  useEffect(() => {
     getleaguetandingdata(id,type,Sid)
     getMatchdataBytourandSeasonIds(id,Sid)
+    getPlayerStatistics(id,Sid)
+    getFactSeasondata(id,Sid)
        }, [id,Sid]);  
 
 
@@ -88,14 +96,14 @@ const competition= () => {
             <h5 className=" MetaLinkBold font-16px mb-0 text-center border-bottom pb-2">League info</h5>
             <div className="row">
                <LeagueInfodata/>
-                <LeagueInfolist/> 
+                <LeagueInfolist seasonsData={seasonsData} leagueId={leaguestandingTourInfo.id} leagueName={leaguestandingTourInfo.name} /> 
             </div>
         </div>
     
         <div className=" mt-7">
         <h5 className=" MetaLinkBold m-0 font-14px text-center mb-3">Player Statistics</h5>
         {/* <!-- table --> */}
-        <PlayerStatistics/>
+        <PlayerStatistics playerStatistics={playerStatisticsData}/>
         </div>
     </div>
      </div>

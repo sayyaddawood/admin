@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const BASE_URL='https://sofasport.p.rapidapi.com/v1/';
+export const BASE_URL2='https://api.sofascore.com/api/v1/';
 export const header = () => {
   const header = {
     'X-RapidAPI-Key': 'c35b737b5dmsh2eb6f9ef5e7ae4ep184ce1jsn27cb4f7d19c7',
