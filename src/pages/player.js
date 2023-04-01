@@ -53,7 +53,7 @@ useEffect(() => {
                         </div>
                     </div>
                     <div className=" text-start text-lg-center">
-                        <h5 className=" font-15px text-white text-uppercase">DOB</h5>
+                        <h5 className=" font-15px text-white text-uppercase">AGE</h5>
                         <h5 className=" MetaLinkSemiBold text-primary m-0 font-22px">{Age +" Yrs"}</h5>
                     </div>
                     <div className=" text-start text-lg-center">
