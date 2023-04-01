@@ -21,7 +21,7 @@ const mediaList= ({data}) => {
                                         </div>
                                         <h5 className=" text-success font-14px fw-400 m-0">
                                             
-                                            {data.transferFeeRaw?data.transferFeeRaw.value+" "+data.transferFeeRaw.currency:<>0 EUR</>}
+                                            {data.transferFeeDescription}
                                          </h5>
                                     </div>
                                 </div>
