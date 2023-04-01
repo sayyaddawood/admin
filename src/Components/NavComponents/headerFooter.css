@@ -16,6 +16,12 @@
 .tupper{
         text-transform: capitalize;
 }
+img[src].hidden, img[data-src].hidden{
+    display: none;
+}
+.mx45 {
+    max-width: 45px;
+}
 
 .imgStyle2
 {
