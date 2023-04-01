@@ -19,10 +19,10 @@ flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
     <div className="d-flex align-items-center gap-4 mb-2">
         <img src={flagUrl} alt="" className=" rounded-circle" style={{width: '24px'}}/>
         <div>
-            <a href="#" className=" font-12px opacity-5 text-dark d-block link-info lh-1">{data.tourdata.category.flag}</a>
+            <a href="#" className="tupper font-12px opacity-5 text-dark d-block link-info lh-1">{data.tourdata.category.flag}</a>
             <a href="#" className=" font-12px text-dark d-block link-info MetaLinkExtraBold">{data.tourdata.name}</a>
         </div>
-        <span className="MetaLinkSemiBold font-12px ms-auto text-success">Sofascore ratings</span>
+        {/* <span className="MetaLinkSemiBold font-12px ms-auto text-success">Sofascore ratings</span> */}
     </div>
     {data.matchdata.map((data2 , index) => (
        <Matchdatalist key={index} data={data2} showResults={showResults}/>

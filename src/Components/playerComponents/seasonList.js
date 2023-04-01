@@ -6,7 +6,7 @@ const seasonList= () => {
   return (
                     <div >
             
-                            <div className="accordion-item overflow-hidden rounded-0 border-0 border-bottom">
+                            {/* <div className="accordion-item overflow-hidden rounded-0 border-0 border-bottom">
                                 <h2 className="accordion-header  border-0" id="heading1.<?php echo $i ?>">
                                     <button className="accordion-button buttonStyle font-15px MetaLinkBold gap-4 px-3 py-2 rounded-0 shadow-none collapsed" type="button" data-bs-toggle="collapse"
                                      data-bs-target="#collapse1.1" aria-expanded="false" aria-controls="collapseOne" 
@@ -19,8 +19,8 @@ const seasonList= () => {
                                         <img src={require('../../images/chart3.png')} alt=""/>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="accordion-item overflow-hidden rounded-0 border-0 border-bottom">
+                            </div> */}
+                            {/* <div className="accordion-item overflow-hidden rounded-0 border-0 border-bottom">
                                 <h2 className="accordion-header border-0" id="heading2.2">
                                     <button className="accordion-button  buttonStyle font-15px MetaLinkBold gap-4 px-3 py-2 rounded-0 shadow-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2.2" aria-expanded="false" aria-controls="collapseOne" 
                                     >
@@ -49,7 +49,7 @@ const seasonList= () => {
                                         </ul>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
                     </div>
     
         

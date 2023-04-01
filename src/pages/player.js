@@ -53,7 +53,7 @@ useEffect(() => {
                         </div>
                     </div>
                     <div className=" text-start text-lg-center">
-                        <h5 className=" font-15px text-white text-uppercase">{dateOfBirth}</h5>
+                        <h5 className=" font-15px text-white text-uppercase">AGE</h5>
                         <h5 className=" MetaLinkSemiBold text-primary m-0 font-22px">{Age +" Yrs"}</h5>
                     </div>
                     <div className=" text-start text-lg-center">
@@ -78,14 +78,12 @@ useEffect(() => {
     </div>
     {/* <!-- transfer history --> */}
     <div className="py-7 padding-inline-2vw padding-inline-lg-10vw">
-        <div className="text-center mb-3">
-            <h5 className=" MetaLinkBold font-16px">Transfer History</h5>
-        </div>
+        
         <div className="row g-4 mb-4">
             <div className="col-lg-6">
-                <img src={require('../images/chart2.png')} alt=""/>
+                {/* <img src={require('../images/chart2.png')} alt=""/> */}
                 {/* <!-- Attribute overview--> */}
-                <div className=" mt-7 mt-lg-13">
+                {/* <div className=" mt-7 mt-lg-13">
                     <div className="d-flex align-items-center justify-content-between mb-3">
                         <h5 className=" MetaLinkBold font-16px">Attribute overview</h5>
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="#222226" cursor="pointer">
@@ -105,9 +103,11 @@ useEffect(() => {
                         <span className=" opacity-5 font-14px fw-500">Tap on attribute overview to display average values for this position
                         </span>
                     </div>
-                </div>
-                <div className="mt-7 mt-lg-13">
-                    <h5 className=" MetaLinkBold font-16px mb-3">Media</h5>
+                </div> */}
+                <div className="">
+                <div className="text-center mb-3">
+            <h5 className=" MetaLinkBold font-16px">Media</h5>
+        </div>
                     <div className="  not-last-border-line bottom-line-spacing divMedia" >
                     {playermediainfo.map((data , index) => (
                         <Media key={index} data={data}/>
@@ -118,6 +118,9 @@ useEffect(() => {
     
             </div>
             <div className="col-lg-6">
+            <div className="text-center mb-3">
+            <h5 className=" MetaLinkBold font-16px">Transfer History</h5>
+        </div>
             <ul className=" overflow-auto not-last-border-line maxHeight" >
             {playertransferinfo.map((data , index) => (
                         <TansferList key={index} data={data}/>
