@@ -6,10 +6,15 @@
 {
      width: 150px;
      mix-blend-mode: screen;
+     border-top-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
 } 
 .divStyle
 {
     --bs-dropdown-bg:  var(--bs-dark); z-index: 99999
+}
+.tupper{
+        text-transform: capitalize;
 }
 
 .imgStyle2

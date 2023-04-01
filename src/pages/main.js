@@ -29,10 +29,10 @@ const Main= () => {
         <div className="col-lg-3 d-none d-lg-block">
             <div>
                 <h6 className=" MetaLinkBold mb-3">All Leagues</h6>
-                <form action="" className=" position-relative">
+                {/* <form action="" className=" position-relative">
                     <input type="text" className=" form-control bg-secondary-subtle rounded-3 ps-7" placeholder="Filter"/>
                     <i className="bi bi-search position-absolute top-50 translate-middle-y" style={{left: '20px'}}></i>
-                </form>
+                </form> */}
                 {categorieslist.map((data , index) => (
                     <> 
                      <AllLeaguesList key={index} data={data}/>
@@ -45,13 +45,13 @@ const Main= () => {
             <div>
             <div className="d-flex align-items-center justify-content-between mb-4">
                     {/* <!-- <h3>All</h3> --> */}
-                    <div className="d-flex align-items-center ms-auto gap-3">
+                    {/* <div className="d-flex align-items-center ms-auto gap-3">
                         <h4 className=" font-14px m-0">Show odds</h4>
                         <div className="switchButton">
                             <input type="checkbox"  id="switch" hidden  onClick={onClick}/>
                             <label for="switch" className=" m-0">Toggle</label>
                         </div>
-                    </div>
+                    </div> */}
         </div>
             {tournamentdata.map((data , index) => (
                 <CountrylistCup  key={index} data={data} showResults={showResults}  />   
