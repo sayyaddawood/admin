@@ -29,8 +29,8 @@ useEffect(() => {
   return (
     <div>
     <div className="py-9 padding-inline-2vw padding-inline-lg-10vw bg-dark">
-        <div className="row justify-content-between gap-4">
-            <div className="col-lg-6">
+        <div className="row justify-content-between ">
+            <div className="col-lg-7">
                 <div className="d-flex align-items-start gap-5 flex-wrap ">
                     <img src={"https://api.sofascore.app/api/v1/player/"+playerInfo.id+"/image"} alt="" 
                     className="border border-1 border-primary imageStyle" />

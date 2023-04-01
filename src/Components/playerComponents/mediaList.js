@@ -2,7 +2,8 @@ import React, { useContext,useState,useEffect } from 'react'
 import { ApiContext } from '../../context/ApiContext'
 // import UsersContext from "../store/users-context";
 const mediaList= ({data}) => {
-    let transferDate = new Date(data.transferDateTimestamp* 1000).toDateString();   
+    let transferDate = new Date(data.transferDateTimestamp* 1000).toDateString(); 
+    if(data.transferTo != undefined){  
   // const usersCtx = useContext(UsersContext);
   return (
                  
@@ -28,6 +29,9 @@ const mediaList= ({data}) => {
                             </a>
                         </li>
   );
+    }else{
+        return null;
+    }
 };
 
 export default mediaList;
