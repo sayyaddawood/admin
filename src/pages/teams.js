@@ -25,9 +25,12 @@ const team = () => {
         getTeamdatabyid(Tid)
         getTeamSeasonStanding(Tid)
         getTeamplayer(Tid)
-        getteamtournaments(Tid)
-        getteamEvent(Tid)
-           }, []);  
+           }, [Tid]);  
+
+           useEffect(() => {
+            getteamtournaments(Tid)
+            getteamEvent(Tid)
+               }, [Tid]);      
 
     let flagUrl=""
     if(teamCountry.alpha2!=undefined&& teamCountry.alpha2!= null)

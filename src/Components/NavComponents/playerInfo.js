@@ -34,12 +34,13 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) =>
     flagUrl="https://www.sofascore.com/static/images/flags/"+flag
    }
    
-  if(Sid!=undefined)
-  {
-    path=`${Path}/${id}/${Sid}`
-    flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
-  }
+  // if(Sid!=undefined)
+  // {
+  //   path=`${Path}/${id}/${Sid}`
+  //   flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
+  // }
   if(iscomp != undefined){
+    path=`${Path}/${id}/${Sid}`
     bstyle = "mx45"
     flagUrl="https://www.sofascore.com/static/images/flags/"+flag
     image = "https://empecto.com/demo/livestats/competitions/"+pic
