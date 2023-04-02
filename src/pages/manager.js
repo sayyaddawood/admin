@@ -6,9 +6,13 @@ import Detail from '../Components/managerComponents/detail';
 import Standing from '../Components/managerComponents/standings';
 import MatchList from '../Components/managerComponents/matchList'
 import Matchdetail from '../Components/managerComponents/matchdetail';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
 const manager= () => {    
+
+    const location = useLocation();
+    const Mid = location.state;
+
     const {getManagerdatabyId,getManagercareer,managerInfo,managerteamInfo,managercountryInfo,managerperformance,managercareer} = useContext(ApiContext);
     let dateOfBirth = new Date(managerInfo.dateOfBirthTimestamp* 1000).toLocaleDateString();
     let winsPer= Math.round(((managerperformance.wins)/managerperformance.total)*100).toFixed(2)+"%"
@@ -24,7 +28,6 @@ const manager= () => {
     flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
     }
 
-    const {Mid} =useParams()     
     useEffect(() => {
         getManagerdatabyId(Mid)
         getManagercareer(Mid)

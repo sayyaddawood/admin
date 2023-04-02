@@ -8,9 +8,12 @@ import Standing from '../Components/teamComponents/Standingtable';
 import Player from '../Components/teamComponents/players';
 import SeasonsStatistics from '../Components/teamComponents/seasonStatistics';
 import LatestTransfer from '../Components/teamComponents/latestTransfer'
+import { useLocation } from 'react-router-dom';
 import Tournaments from '../Components/teamComponents/tournaments'
 const team = () => {
-    const {Tid} =useParams()
+
+    const location = useLocation();
+    const Tid = location.state;
     let type="total"
 
     const { getTeamdatabyid,teamCountry,teamInfodata,

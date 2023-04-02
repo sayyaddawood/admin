@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 // import UsersContext from "../store/users-context";
 const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) => {
 
-   let path= `${Path}/${id}`
+   let path= `${Path}`   
+   let data={pathname:path ,state:id}
    let flagUrl="https://www.sofascore.com/static/images/flags/au.png"
    let image ="https://api.sofascore.app/api/v1/player/"+id+"/image"
    let bstyle = "border border-1 border-primary  imgStyle2"
@@ -15,17 +16,16 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) =>
    }
    if(Tid!=undefined)
    {
-   
     if(id==undefined){
       image ="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
-      path=`${Path}/${Tid}`
+      data={pathname:path ,state:Tid}
     }
-    flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
+     flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
    }
    
    if(Mid!=undefined)
    {
-    path=`${Path}/${Mid}`
+    data={pathname:path ,state:Mid}
     image ="https://api.sofascore.app/api/v1/manager/"+Mid+"/image"
     flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
    }
@@ -34,13 +34,13 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) =>
     flagUrl="https://www.sofascore.com/static/images/flags/"+flag
    }
    
-  // if(Sid!=undefined)
-  // {
-  //   path=`${Path}/${id}/${Sid}`
-  //   flagUrl="https://api.sofascore.app/api/v1/team/"+Tid+"/image"
-  // }
+  
   if(iscomp != undefined){
-    path=`${Path}/${id}/${Sid}`
+    const objdata = {
+      Sid:Sid,
+      id:id
+    };
+    data={pathname:path ,state:{objdata}}
     bstyle = "mx45"
     flagUrl="https://www.sofascore.com/static/images/flags/"+flag
     image = "https://empecto.com/demo/livestats/competitions/"+pic
@@ -52,7 +52,7 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) =>
  
   return (
 <div>
-    <Link to={path}  className=" text-primary-hover" >
+    <Link to={data}  className=" text-primary-hover" >
     {/* <a href={Path}   > */}
         <div className="d-flex align-items-center gap-3">
             

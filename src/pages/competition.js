@@ -7,10 +7,13 @@ import Matchedetail from '../Components/competitionComponents/matchDetail';
 import Matchedata from '../Components/competitionComponents/matchdata';
 import LeagueInfodata from '../Components/competitionComponents/leagueInfodata';
 import LeagueInfolist from '../Components/competitionComponents/leagueInfolist';
+import { useLocation } from 'react-router-dom';
 import PlayerStatistics from '../Components/competitionComponents/playerStatistics';
 const competition= () => {
- const {id,Sid} =useParams()
- let type="total"
+   
+    const location = useLocation();
+    const data = location.state.objdata; 
+    let type="total"
 
  const {getleaguetandingdata,
         leaguestandingData,
@@ -33,16 +36,16 @@ const competition= () => {
 
 
  useEffect(() => {
-    getleaguetandingdata(id,type,Sid)
-    getMatchdataBytourandSeasonIds(id,Sid)
-    getPlayerStatistics(id,Sid)
-    getFactSeasondata(id,Sid)
-       }, [id,Sid]);  
+    getleaguetandingdata(data.id,type,data.Sid)
+    getMatchdataBytourandSeasonIds(data.id,data.Sid)
+    getPlayerStatistics(data.id,data.Sid)
+    getFactSeasondata(data.id,data.Sid)
+       }, [data.id,data.Sid]);  
 
 
     const onClick = (e) => {
         type=e.target.value
-        getleaguetandingdata(id,type,Sid)
+        getleaguetandingdata(data.id,type,data.Sid)
      }    
   return (
     // <?php include('assets/include/header.php') ?>

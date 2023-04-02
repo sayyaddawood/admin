@@ -4,11 +4,15 @@ import Media from '../Components/playerComponents/media';
 import TansferList from '../Components/playerComponents/mediaList';
 import SeasonList from '../Components/playerComponents/seasonList';
 import { ApiContext } from '../context/ApiContext'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
 
+
 const player= () => {
-const {id} =useParams()
+    
+    const location = useLocation();
+    const id = location.state;
+// const {id} =useParams()
 const {getPlayerdatabyId,getPlayertransfarhistory,playertransferinfo,playerInfo,playercountryInfo,playerteamInfo,getPlayermedia,playermediainfo} = useContext(ApiContext);
 let contractUntil = new Date(playerInfo.contractUntilTimestamp* 1000).toDateString();
 let dateOfBirth = new Date(playerInfo.dateOfBirthTimestamp* 1000).toLocaleDateString();
