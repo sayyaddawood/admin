@@ -13,7 +13,7 @@ const matchedetail= ({data,leagueId,leagueName}) => {
                 alt="" className=" rounded-circle" style={{width: '24px'}}/>
                 <div>
                     <a href="#" className=" font-12px opacity-5 text-dark d-block link-info lh-1">{leagueName}</a>
-                    <span className="MetaLinkSemiBold font-12px ms-auto text-success d-block">Sofascore ratings</span>
+                    {/* <span className="MetaLinkSemiBold font-12px ms-auto text-success d-block">Sofascore ratings</span> */}
                 </div>
             </div>
             {data.map((data2 , index) => (
@@ -31,10 +31,10 @@ const matchedetail= ({data,leagueId,leagueName}) => {
                     <div className="d-flex align-items-center gap-3 text-center">
                         <ul className=" d-flex align-items-center justify-content-end gap-1">
                             <li className=" text-center font-12px">
-                                <i className="bi bi-hand-thumbs-up text-success"></i>
+                                {/* <i className="bi bi-hand-thumbs-up text-success"></i> */}
                             </li>
                             <li className=" text-center font-12px">
-                                <i className="bi bi-play-circle text-success"></i>
+                                {/* <i className="bi bi-play-circle text-success"></i> */}
                             </li>
                         </ul>
 

@@ -4,12 +4,11 @@ import Media from '../Components/playerComponents/media';
 import TansferList from '../Components/playerComponents/mediaList';
 import SeasonList from '../Components/playerComponents/seasonList';
 import { ApiContext } from '../context/ApiContext'
-import { useLocation } from 'react-router-dom';
+import { useLocation,useHistory} from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
 
 
-const player= () => {
-    
+const player= () => {    
     const location = useLocation();
     const id = location.state;
 // const {id} =useParams()

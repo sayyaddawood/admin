@@ -26,7 +26,7 @@ const leagueInfodata= ({data}) => {
                     </div>
     </div>
     {/* <!-- team of the week --> */}
-    <div className=" mt-4">
+    {/* <div className=" mt-4">
         <div className="d-flex align-items-center justify-content-between mb-2">
             <h5 className=" MetaLinkBold m-0 font-14px">Team of the week</h5>
             <div>
@@ -41,7 +41,7 @@ const leagueInfodata= ({data}) => {
             </div>
         </div>
         <img src={require('../../images/chart6.png')}  alt=""/>
-    </div>
+    </div> */}
 </div>
 
   );

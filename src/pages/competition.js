@@ -1,6 +1,5 @@
 import React, { useContext,useState,useEffect } from 'react'
 import './style/competitionStyle.css';
-import { useParams } from 'react-router-dom';
 import { ApiContext } from '../context/ApiContext'
 import Standing from '../Components/competitionComponents/Standingtable';
 import Matchedetail from '../Components/competitionComponents/matchDetail';
@@ -12,6 +11,7 @@ import PlayerStatistics from '../Components/competitionComponents/playerStatisti
 const competition= () => {
    
     const location = useLocation();
+    let Sid="37036"
     const data = location.state.objdata; 
     let type="total"
 
@@ -36,11 +36,11 @@ const competition= () => {
 
 
  useEffect(() => {
-    getleaguetandingdata(data.id,type,data.Sid)
-    getMatchdataBytourandSeasonIds(data.id,data.Sid)
-    getPlayerStatistics(data.id,data.Sid)
-    getFactSeasondata(data.id,data.Sid)
-       }, [data.id,data.Sid]);  
+    getleaguetandingdata(data.id,type,Sid)
+    getMatchdataBytourandSeasonIds(data.id,Sid)
+    getPlayerStatistics(data.id,Sid)
+    getFactSeasondata(data.id,Sid)
+       }, [data.id,Sid]);  
 
 
     const onClick = (e) => {
@@ -63,8 +63,15 @@ const competition= () => {
                         <div className="d-flex align-items-center gap-2">
                             <img src={flagUrl} alt="" style={{width: '25px'}} className=" rounded-circle border border-primary"/>
                             <h5 className=" font-17px text-white text-capitalize m-0 fw-300">{leagueCategoryInfo.name}</h5>
+                        <div>
+                            <select className=" transInput form-control border-top-0 border-bottom-0 
+                            border-start border-end border-primary rounded-0 font-13px mx-auto ps-4">
+                              <option>2012-2013</option>
+                              </select>
+                              </div>
+                           </div>
                         </div>
-                    </div>
+                      
                 </div>
             </div>
     

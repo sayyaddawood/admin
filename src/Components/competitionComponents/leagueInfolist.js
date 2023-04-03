@@ -47,10 +47,10 @@ const leagueInfolist= ({seasonsData,leagueId,leagueName}) => {
                 <span className=" font-15px fw-400">Goals</span>
                 <span className=" font-15px fw-400">{seasonsData.goals}</span>
             </li>
-            <li className="d-flex align-items-center justify-content-between gap-2">
+            {/* <li className="d-flex align-items-center justify-content-between gap-2">
                 <span className=" font-15px fw-400">Average goals</span>
                 <span className=" font-15px fw-400">{seasonsData.goals}</span>
-            </li>
+            </li> */}
             <li className="d-flex align-items-center justify-content-between gap-2">
                 <span className=" font-15px fw-400">Home team wins</span>
                 <span className=" font-15px fw-400">{homeTeamWinsPer}</span>

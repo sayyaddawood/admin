@@ -14,7 +14,7 @@ const standing= ({playerStatistics}) => {
                     <th className=" font-14px fw-400 bg-body-secondary p-2" style={{"-bsBgOpacity":"0.4"}}>Team</th>
                     <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Name</th>
                     <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Goals</th>
-                    <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Expected Goals (XG)</th>
+                    {/* <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Expected Goals (XG)</th> */}
                     <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Succ. dribbles</th>
                     <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Tackles</th>
                     <th className=" font-14px fw-400 bg-body-secondary p-2 text-center" style={{"-bsBgOpacity":"0.4"}}>Assists</th>
@@ -33,7 +33,7 @@ const standing= ({playerStatistics}) => {
                         className=" mx-auto object-fit-cover" alt="" style={{width: '25px' ,height: '25px'}}/></td>
                         <td>{data.playerName}</td>
                         <td className=" text-center">{data.goals}</td>
-                        <td className=" text-center">{data.expectedgoals}</td>
+                        {/* <td className=" text-center">{data.expectedgoals}</td> */}
                         <td className=" text-center">{data.successfulDribbles}</td>
                         <td className=" text-center">{data.tackles}</td>
                         <td className=" text-center">{data.assists}</td>

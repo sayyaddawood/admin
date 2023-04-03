@@ -41,7 +41,7 @@ const standing= ({checked,StandingtabeData}) => {
                     <th className="fw-400 font-14px opacity-6 text-center">D</th>
                     <th className="fw-400 font-14px opacity-6 text-center">L</th>
                     <th className="fw-400 font-14px opacity-6 text-center">Goals</th>
-                    <th className="fw-400 font-14px opacity-6 text-center" style={{width: '3%'}}>Last 5</th>
+                    {/* <th className="fw-400 font-14px opacity-6 text-center" style={{width: '3%'}}>Last 5</th> */}
                     <th className="fw-400 font-14px opacity-6 text-center">Pts</th>
                 </tr>
             </thead>
@@ -67,7 +67,7 @@ const standing= ({checked,StandingtabeData}) => {
                   <td className=" font-14px text-center">{data.draws}</td>
                   <td className=" font-14px text-center">{data.losses}</td>
                   <td className=" font-14px text-center">{data.scoresFor}:{data.scoresAgainst}</td>
-                  <td className=" text-center">
+                  {/* <td className=" text-center">
                       <div className="btn-group">
                           <a href="#" className="btn justify-content-center btn-success MetaLinkBold font-14px text-white p-0 lh-1 " style={{width: '22px', height: '20px'}}>W</a>
                           <a href="#" className="btn justify-content-center btn-success MetaLinkBold font-14px text-white p-0 lh-1 " style={{width: '22px', height: '20px'}}>W</a>
@@ -77,7 +77,7 @@ const standing= ({checked,StandingtabeData}) => {
                           <a href="#" className="btn justify-content-center btn-secondary MetaLinkBold font-14px text-white p-0 lh-1 " style={{"width":"22px","height":"20px","-bsBtnBg":"var(--bs-gray-500)","-bsBtnBorderColor":"var(--bs-gray-500)"}}>&nbsp;</a>
 
                       </div>
-                  </td>
+                  </td> */}
                   <td className=" font-14px text-center">{data.points}</td>
               </tr>
                        

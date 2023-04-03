@@ -37,7 +37,6 @@ const PlayerInfo = ({Path,id,name,team,pic,flag,Tid,Sid,Mid,noborder,iscomp}) =>
   
   if(iscomp != undefined){
     const objdata = {
-      Sid:Sid,
       id:id
     };
     data={pathname:path ,state:{objdata}}
