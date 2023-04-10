@@ -6,17 +6,29 @@ import TabStanding from '../competitionComponents/tabstanding';
 import Tabmatchdata from '../competitionComponents/tabmatchdata';
 
 // import UsersContext from "../store/users-context";
-const matchdata= ({data}) => {
+const matchdata= ({country,leagueName}) => {
+     const {Eventdata} = useContext(ApiContext);
+     let homeTeamId=""
+     let awayTeamId=""
+     let snamehomeTeam=""
+     let snameawayTeam=""
+    if(Eventdata.homeTeam)
+    {
+        awayTeamId=Eventdata.awayTeam.id
+        homeTeamId=Eventdata.homeTeam.id
+        snamehomeTeam=Eventdata.homeTeam.shortName
+        snameawayTeam=Eventdata.awayTeam.shortName
 
+    }
   return (
     <div className="col-md-6">
     <div className="px-3 py-2">
         <ul className=" d-flex align-items-center gap-2">
-            <li><a href="#" className=" text-info font-12px MetaLinkBold">England</a></li>
+            <li><a href="#" className=" text-info font-12px MetaLinkBold">{country}</a></li>
             <li><i className="bi bi-caret-right-fill lh-1 font-11px opacity-4"></i></li>
-            <li><a href="#" className=" text-info font-12px MetaLinkBold">Premier League, Round 21</a></li>
+        <li><a href="#" className=" text-info font-12px MetaLinkBold">{Eventdata.season?Eventdata.season.name:<></>}, {Eventdata.roundInfo?"round : "+Eventdata.roundInfo.round:<></>}</a></li>
             <li><i className="bi bi-caret-right-fill lh-1 font-11px opacity-4"></i></li>
-            <li><a href="#" className=" font-12px MetaLinkBold text-body-tertiary">Arsenal - Man Utd</a></li>
+            <li><a href="#" className=" font-12px MetaLinkBold text-body-tertiary">{snamehomeTeam} - {snameawayTeam}</a></li>
         </ul>
         <div>
             <div className="d-flex align-items-end justify-content-between mt-3">
@@ -29,22 +41,22 @@ const matchdata= ({data}) => {
                         </a>
                     </div>
                     <div className=" text-center">
-                        <h5 className="mb-3 font-13px">Arsenal</h5>
+                        <h5 className="mb-3 font-13px">{Eventdata.homeTeam?Eventdata.homeTeam.name:<></>}</h5>
                         <a href="#">
-                            <img src="https://api.sofascore.app/api/v1/team/42/image" alt="" 
+                            <img src={"https://api.sofascore.app/api/v1/team/"+homeTeamId+"/image"} alt="" 
                             style={{width: '50px'}}/>
                         </a>
                     </div>
                 </div>
                 <div className=" text-center mb-1">
                     <h5 className=" font-18px MetaLinkBold mb-1">Next week</h5>
-                    <h6 className=" font-12px opacity-5 m-0">22/01/2023 21:30</h6>
+                    <h6 className=" font-12px opacity-5 m-0">{new Date(Eventdata.startTimestamp*1000).toLocaleDateString()}</h6>
                 </div>
                 <div className="d-flex align-items-end gap-1">
                     <div className=" text-center">
-                        <h5 className="mb-3 font-13px">Man Utd</h5>
+                        <h5 className="mb-3 font-13px">{Eventdata.awayTeam?Eventdata.awayTeam.name:<></>}</h5>
                         <a href="#">
-                            <img src="https://api.sofascore.app/api/v1/team/35/image" alt="" 
+                            <img src={"https://api.sofascore.app/api/v1/team/"+awayTeamId+"/image"} alt="" 
                             style={{width: '50px'}}/>
                         </a>
                     </div>

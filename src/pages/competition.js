@@ -6,13 +6,14 @@ import Matchedetail from '../Components/competitionComponents/matchDetail';
 import Matchedata from '../Components/competitionComponents/matchdata';
 import LeagueInfodata from '../Components/competitionComponents/leagueInfodata';
 import LeagueInfolist from '../Components/competitionComponents/leagueInfolist';
-import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PlayerStatistics from '../Components/competitionComponents/playerStatistics';
 const competition= () => {
    
-    const location = useLocation();
-    let Sid="37036"
-    const data = location.state.objdata; 
+    // const location = useLocation();
+    let Sid=""
+    let event_id=""
+    const {id} = useParams(); 
     let type="total"
 
  const {getleaguetandingdata,
@@ -25,6 +26,12 @@ const competition= () => {
         playerStatisticsData,
         getFactSeasondata,
         seasonsData,
+        getTitle,
+        TitleData,
+        getseasonlistbytourId,
+        SeasonList,
+        getEventDataById,
+        Eventdata,
     } = useContext(ApiContext);
  let flagUrl=""
  if(leagueCategoryInfo.alpha2!=undefined&& leagueCategoryInfo.alpha2!= null)
@@ -34,19 +41,44 @@ const competition= () => {
  flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
  }
 
+if(leagueMatchesdata[0])
+{
+   event_id=leagueMatchesdata[0].id
+   console.log(event_id)
+} 
+if(SeasonList[0])
+{
+ Sid=SeasonList[0].id
+}
 
  useEffect(() => {
-    getleaguetandingdata(data.id,type,Sid)
-    getMatchdataBytourandSeasonIds(data.id,Sid)
-    getPlayerStatistics(data.id,Sid)
-    getFactSeasondata(data.id,Sid)
-       }, [data.id,Sid]);  
+    getseasonlistbytourId(id)
+    getTitle(id)
+    if(Sid!=""){
+    getleaguetandingdata(id,type,Sid)
+    getMatchdataBytourandSeasonIds(id,Sid)
+    getPlayerStatistics(id,Sid)
+    getFactSeasondata(id,Sid)
+    }
+    if(event_id!="")
+    {
+    getEventDataById(JSON.stringify(event_id))
+    }
+       }, [id,Sid]);  
+
 
 
     const onClick = (e) => {
         type=e.target.value
-        getleaguetandingdata(data.id,type,data.Sid)
-     }    
+        getleaguetandingdata(id,type,Sid)
+     }
+     const onSelect = (e) => {
+        Sid=e.target.value
+        getleaguetandingdata(id,type,Sid)
+        getMatchdataBytourandSeasonIds(id,Sid)
+        getPlayerStatistics(id,Sid)
+        getFactSeasondata(id,Sid)
+     }      
   return (
     // <?php include('assets/include/header.php') ?>
 <div> 
@@ -65,8 +97,11 @@ const competition= () => {
                             <h5 className=" font-17px text-white text-capitalize m-0 fw-300">{leagueCategoryInfo.name}</h5>
                         <div>
                             <select className=" transInput form-control border-top-0 border-bottom-0 
-                            border-start border-end border-primary rounded-0 font-13px mx-auto ps-4">
-                              <option>2012-2013</option>
+                            border-start border-end border-primary rounded-0 font-13px mx-auto ps-4"
+                             onChange={onSelect}>
+                                   {SeasonList.map((data , index) => (
+                                    <option value={data.id}>{data.name}</option>
+                                   ))}               
                               </select>
                               </div>
                            </div>
@@ -94,7 +129,7 @@ const competition= () => {
                     </ul>
               <Matchedetail leagueId={leaguestandingTourInfo.id} leagueName={leaguestandingTourInfo.name} data={leagueMatchesdata}/>
                 </div>
-          <Matchedata/>
+          <Matchedata country={leagueCategoryInfo.name} leagueName={leaguestandingTourInfo.name}/>
     
             </div>
         </div>
@@ -105,7 +140,7 @@ const competition= () => {
         <div className=" mt-10">
             <h5 className=" MetaLinkBold font-16px mb-0 text-center border-bottom pb-2">League info</h5>
             <div className="row">
-               <LeagueInfodata/>
+               <LeagueInfodata titleData={TitleData}/>
                 <LeagueInfolist seasonsData={seasonsData} leagueId={leaguestandingTourInfo.id} leagueName={leaguestandingTourInfo.name} /> 
             </div>
         </div>

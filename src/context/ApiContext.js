@@ -37,6 +37,10 @@ export const ApiProvider = ({children}) => {
   const [teamStatisticsData,setteamStatisticsData]=useState([])
   const [playerStatisticsData,setplayerStatisticsData]=useState([])
   const [seasonsData,setseasonsData]=useState([])
+  const [TitleData,setTitleData]=useState([])
+  const [SeasonList,setSeasonList]=useState([])
+  const [Eventdata,setEventdata]=useState([])
+
 
 
   const [teamSeasonStanding,setteamSeasonStanding]=useState([])
@@ -248,8 +252,11 @@ const options = {
     });
    }
 
-  const getTournament = () => {
-    let currentDate = new Date().toJSON().slice(0, 10);
+  const getTournament = (currentDate) => {
+    if(currentDate==undefined || currentDate=="")
+    {
+     currentDate = new Date().toJSON().slice(0, 10);
+     }
     const options = {
       method: 'GET',
       url: BASE_URL+'events/schedule/date',
@@ -658,6 +665,71 @@ const getteamtournaments = (Tid) => {
   });
 };
 
+const getTitle = (id) => {
+  setIsLoading(true)
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'unique-tournaments/data',
+    params: {unique_tournament_id: id},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {
+      setTitleData(response.data.data)
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
+const getseasonlistbytourId= (id) => {
+  setIsLoading(true)
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'unique-tournaments/seasons',
+    params: {unique_tournament_id: id},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {
+      setSeasonList(response.data.data)
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+const getEventDataById= (id) => {
+ 
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'events/data',
+    params: {event_id: id},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+
+    if(response.status==200)
+    {
+      console.log(response.data.data)
+      setEventdata(response.data.data)
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
 // const getteamdata = (id,Sid,type) => {
 //   const options = {
 //     method: 'GET',
@@ -714,7 +786,13 @@ const getteamtournaments = (Tid) => {
         getTeamplayer,
         getteamtournaments,
         getteamEvent,
-          
+        getTitle,
+        getseasonlistbytourId,
+        getEventDataById,
+
+        Eventdata,
+        SeasonList,
+        TitleData,
         teamEventData,
         teamtournamentdata,
         Players, 

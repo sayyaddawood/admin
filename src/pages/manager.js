@@ -6,12 +6,13 @@ import Detail from '../Components/managerComponents/detail';
 import Standing from '../Components/managerComponents/standings';
 import MatchList from '../Components/managerComponents/matchList'
 import Matchdetail from '../Components/managerComponents/matchdetail';
-import { useLocation } from 'react-router-dom';
+import { useLocation ,useParams} from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
 const manager= () => {    
 
-    const location = useLocation();
-    const Mid = location.state;
+    // const location = useLocation();
+    // const Mid = location.state;
+    const {Mid} =useParams()
 
     const {getManagerdatabyId,getManagercareer,managerInfo,managerteamInfo,managercountryInfo,managerperformance,managercareer} = useContext(ApiContext);
     let dateOfBirth = new Date(managerInfo.dateOfBirthTimestamp* 1000).toLocaleDateString();

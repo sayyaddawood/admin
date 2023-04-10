@@ -8,10 +8,12 @@ import ItemList from '../Components/mainComponent/listitem';
 import { ApiContext } from '../context/ApiContext'
 
 const Main= () => {
+    const [selectedDate, setSelectedDate] = useState("");
+
     const {categorieslist,tournamentdata,getTournament,getTopLegue,getcategories} = useContext(ApiContext);
     useEffect(() => {
         getcategories()
-        getTournament()
+        getTournament(selectedDate)
         getTopLegue()
           }, []);  
      const [showResults, setShowResults] = React.useState(false)
@@ -19,7 +21,10 @@ const Main= () => {
               setShowResults(e.target.checked)
           }    
         
-               
+          function handleInputChange(event) {
+           setSelectedDate(event.target.value)
+            getTournament(event.target.value)
+          }        
 
   return (
     
@@ -65,12 +70,13 @@ const Main= () => {
 
         </div>
         <div className="col-lg-3 d-none d-lg-block">
-            <div className="mb-4">
-                <input type="text" className="selectDate border-0"/>
+        <div className="mb-4">
+                <input type="date" value={selectedDate}  onChange={handleInputChange} className="selectDate border-0"/>
                 <a href="#" className="btn btn-info rounded-pill font-12px text-white lh-1 px-3 py-2 ">Today</a>
             </div>
-            <TopLeagues/>
-            <Rankings/>
+          
+            <TopLeagues  key={Math.random()}/>
+            <Rankings  key={Math.random()}/>
         </div>
     </div>
 </div>

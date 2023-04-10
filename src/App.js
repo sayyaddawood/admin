@@ -21,10 +21,10 @@ function App() {
       <Header/>
        <Switch>
          <Route exact to path="/" component={Main} />
-         <Route exact to path="/player" component={Player} />
-         <Route exact to path="/manager" component={Manager} />
-         <Route exact to path="/team" component={Team} />
-         <Route exact to path="/competition" component={Competition} />
+         <Route exact to path="/player/:id" component={Player} />
+         <Route exact to path="/manager/:Mid" component={Manager} />
+         <Route exact to path="/competition/:id" component={Competition} />
+         <Route exact to path="/team/:Tid" component={Team} />
       </Switch>
       <Footer/>
      </BrowserRouter>

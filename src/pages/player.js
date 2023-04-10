@@ -4,14 +4,12 @@ import Media from '../Components/playerComponents/media';
 import TansferList from '../Components/playerComponents/mediaList';
 import SeasonList from '../Components/playerComponents/seasonList';
 import { ApiContext } from '../context/ApiContext'
-import { useLocation,useHistory} from 'react-router-dom';
+import { useLocation,useParams} from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
 
 
 const player= () => {    
-    const location = useLocation();
-    const id = location.state;
-// const {id} =useParams()
+
 const {getPlayerdatabyId,getPlayertransfarhistory,playertransferinfo,playerInfo,playercountryInfo,playerteamInfo,getPlayermedia,playermediainfo} = useContext(ApiContext);
 let contractUntil = new Date(playerInfo.contractUntilTimestamp* 1000).toDateString();
 let dateOfBirth = new Date(playerInfo.dateOfBirthTimestamp* 1000).toLocaleDateString();
@@ -23,12 +21,19 @@ let flagName =playercountryInfo.alpha2
 let  result = flagName.toLowerCase()
 flagUrl="https://www.sofascore.com/static/images/flags/"+result+".png"
 }
+const data =useParams()
+// const location = useLocation();
+// const id = location.state;
+const id=data.id
+
 
 useEffect(() => {
     getPlayerdatabyId(id)
     getPlayermedia(id)
     getPlayertransfarhistory(id)
-      }, [id]);   
+      }, [id]);  
+
+ 
   return (
     <div>
     <div className="py-9 padding-inline-2vw padding-inline-lg-10vw bg-dark">
@@ -131,7 +136,7 @@ useEffect(() => {
              </ul>
              <div className=" mt-7 mt-lg-10">
              <div className="accordion accordionDivStyle" id="accordionExample">
-             <SeasonList/> 
+             <SeasonList  key={Math.random()} /> 
              </div>
              </div>
             </div>

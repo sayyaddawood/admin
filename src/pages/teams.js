@@ -12,8 +12,10 @@ import { useLocation } from 'react-router-dom';
 import Tournaments from '../Components/teamComponents/tournaments'
 const team = () => {
 
-    const location = useLocation();
-    const Tid = location.state;
+    // const location = useLocation();
+    // const Tid = location.state;
+    const {Tid} =useParams()
+
     let type="total"
 
     const { getTeamdatabyid,teamCountry,teamInfodata,

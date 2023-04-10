@@ -41,7 +41,7 @@ const PlayerList = () => {
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">
                                 {
                                   playersdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/player"  id={data.id} Tid={data.team_id} name={data.name} team={data.team_name} data={data} />
+                                        <PlayerInfo  key={index} Path ="/player"  id={data.id} Tid={data.team_id} name={data.name} team={data.team_name} data={data} />
                                         ))     
                                 }
 
@@ -59,7 +59,7 @@ const PlayerList = () => {
                                
                                 {
                                  managersdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/manager" Mid={data.id} Tid={data.team_id} name={data.name} team={data.team_name} data={data} />
+                                        <PlayerInfo  key={index} Path ="/manager" Mid={data.id} Tid={data.team_id} name={data.name} team={data.team_name} data={data} />
                                         ))     
                                 }
                                
@@ -76,7 +76,7 @@ const PlayerList = () => {
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">  
                                 {
                                  teamsdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/team" flag={data.parent_flag} Tid={data.id} name={data.name} team={data.parent_name} data={data} noborder='1' />
+                                        <PlayerInfo  key={index} Path ="/team" flag={data.parent_flag} Tid={data.id} name={data.name} team={data.parent_name} data={data} noborder='1' />
                                         ))     
                                  }
                                
@@ -94,7 +94,7 @@ const PlayerList = () => {
                                 <div className="row row-cols-2 row-cols-md-3 row-cols-lg-5 px-0 py-0 px-lg-4 py-lg-4 g-3 m-0">
                                 {
                                  competitionsdata.map((data , index) => (
-                                        <PlayerInfo  Path ="/competition"  flag={data.parent_flag}  pic={data.image} id={data.id} name={data.name} team={data.parent_name} data={data} noborder='1' iscomp='1' />
+                                        <PlayerInfo key={index} Path ="/competition"  flag={data.parent_flag}  pic={data.image} id={data.id} name={data.name} team={data.parent_name} data={data} noborder='1' iscomp='1' />
                                         ))     
                                  }
                                 </div>

@@ -24,7 +24,7 @@ const Hearder = () => {
                     <i className="bi bi-justify-right text-white font-30px"></i>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                  <PlayerList/>
+                  <PlayerList  key={Math.random()} />
                     <form className="col-12 col-md-6 col-lg-4" role="search">
                         <div className=" position-relative">
                             <input type="search" className=" transInput form-control border-top-0 border-bottom-0 border-start border-end border-primary rounded-0 font-13px mx-auto ps-7"

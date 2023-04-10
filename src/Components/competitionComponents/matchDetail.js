@@ -4,6 +4,11 @@ import { ApiContext } from '../../context/ApiContext'
 // import UsersContext from "../store/users-context";
 const matchedetail= ({data,leagueId,leagueName}) => {
 
+const {getEventDataById,Eventdata,isLoading} = useContext(ApiContext);   
+
+    const getmatchdataByid = (id) => {
+        getEventDataById(JSON.stringify(id))
+    }    
   return (
     <div className=" overflow-auto" style={{maxHeight:"750px"}}>
     {/* <?php for ($a = 1; $a <= 4; $a++) { ?> */}
@@ -17,7 +22,7 @@ const matchedetail= ({data,leagueId,leagueName}) => {
                 </div>
             </div>
             {data.map((data2 , index) => (
-                <div role="button" className="d-flex align-items-center flex-1 hover-bg-gray py-2" style={{"-bsBgHoverColor":"var(--bs-gray-100)"}}>
+                <div role="button" onClick={() =>getmatchdataByid(data2.id)}  className="d-flex align-items-center flex-1 hover-bg-gray py-2" style={{"-bsBgHoverColor":"var(--bs-gray-100)"}}>
                 <div className=" text-center" style={{width: '70px'}}>
                     <span className=" text-dark d-block font-12px opacity-5">{new Date(data2.startTimestamp*1000).toLocaleDateString()}</span>
                     <span className=" text-dark d-block font-12px opacity-5 text-uppercase">FT</span>

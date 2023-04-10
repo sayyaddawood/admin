@@ -2,6 +2,8 @@
 import React, { useContext,useState,useEffect } from 'react'
 import { ApiContext } from '../../context/ApiContext'
 import { getAge } from '../../UserComponents/Common';
+import { Link } from "react-router-dom";
+
 // import UsersContext from "../store/users-context";
 const player= ({Players}) => {
  
@@ -35,7 +37,8 @@ const player= ({Players}) => {
                                                 <h5 className="m-0 font-14px lh-1">{data.player.country.name}</h5>
                                             </div>
                                         </div>
-                                        <a href="#" className=" stretched-link"></a>
+                                        <Link to={"../player/"+data.player.id}  className="stretched-link" ></Link>
+                                        {/* <a href="#" className=" stretched-link"></a> */}
                                     </div>
                                 </div>
                                  ))} 
