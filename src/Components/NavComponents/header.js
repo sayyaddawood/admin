@@ -18,7 +18,7 @@ const Hearder = () => {
         <nav className="navStyle navbar navbar-expand-lg padding-inline-4vw py-3 py-md-6 border-bottom border-primary bg-dark">
             <div className="container-fluid p-0">
                 <a href="/" className=" navbar-brand d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none me-2 me-lg-9">
-                    <img className="imgStyle" src="assets/assets/images/logo.jpg" alt=""/>
+                    <img className="imgStyle" src="/assets/assets/images/logo.jpg" alt=""/>
                 </a>
                 <button className="navbar-toggler p-0 border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i className="bi bi-justify-right text-white font-30px"></i>

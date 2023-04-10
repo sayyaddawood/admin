@@ -5,11 +5,13 @@ import CountrylistCup from'../Components/mainComponent/countrylistCup';
 import TopLeagues from'../Components/mainComponent/topLeagues';
 import Rankings from'../Components/mainComponent/ranking';
 import ItemList from '../Components/mainComponent/listitem';
+
 import { ApiContext } from '../context/ApiContext'
 
 const Main= () => {
     const [selectedDate, setSelectedDate] = useState("");
-
+    const [todaydate, onDateChange] = useState(new Date());
+  
     const {categorieslist,tournamentdata,getTournament,getTopLegue,getcategories} = useContext(ApiContext);
     useEffect(() => {
         getcategories()
@@ -20,6 +22,10 @@ const Main= () => {
           const onClick = (e) => {
               setShowResults(e.target.checked)
           }    
+
+        //   function onDateChange(){
+        //     getTournament(todaydate)
+        //   }
         
           function handleInputChange(event) {
            setSelectedDate(event.target.value)
@@ -61,18 +67,14 @@ const Main= () => {
             {tournamentdata.map((data , index) => (
                 <CountrylistCup  key={index} data={data} showResults={showResults}  />   
                 ))}
-                  
-  
-                <div className="text-center">
-                    <a href="#" className="btn btn-info rounded-pill font-12px text-white lh-1 px-3 py-2">Show All Matches <i className="bi bi-chevron-down"></i></a>
-                </div>
             </div>
 
         </div>
         <div className="col-lg-3 d-none d-lg-block">
         <div className="mb-4">
+        
+        {/* <input type="text" class="selectDate border-0" /> */}
                 <input type="date" value={selectedDate}  onChange={handleInputChange} className="selectDate border-0"/>
-                <a href="#" className="btn btn-info rounded-pill font-12px text-white lh-1 px-3 py-2 ">Today</a>
             </div>
           
             <TopLeagues  key={Math.random()}/>

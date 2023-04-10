@@ -72,7 +72,7 @@ const footer = () => {
 
 </footer>
 <div className="copyright padding-inline-2vw padding-inline-lg-10vw py-3" style={{background:'#202020'}}>
-  <p className=" text-white m-0 font-13px text-center text-lg-start">2023 Livesstats - All Rights Reserved.</p>
+  <p className=" text-white m-0 font-13px text-center text-lg-start">2023 LiveStats - All Rights Reserved.</p>
 </div>
     </div>
   );

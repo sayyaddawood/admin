@@ -9,6 +9,7 @@ export const ApiProvider = ({children}) => {
   const [playercountryInfo, setcountryInfo] = useState({});
   const [playermediainfo, setplayermediainfo] = useState([]);
   const [playertransferinfo, setplayertransferinfo] = useState([]);
+  const [managerEvents,setManagerEvents] = useState([]);
 
 
 
@@ -730,6 +731,57 @@ const getEventDataById= (id) => {
   });
 };
 
+
+const getManagerEvents= (id) => {
+ 
+  const options = {
+    method: 'GET',
+    url: BASE_URL+'managers/events',
+    params: {manager_id: id,page: '0', course_events: 'last'},
+    headers:header()
+  };
+  axios.request(options).then(function (response) {
+    let  tourName = [];
+    if(response.status==200)
+    {
+
+      for (let i = 0; i < response.data.data.events.length ; i++) {
+        tourName.push(response.data.data.events[i].tournament)
+      }
+      if(tourName!=null && tourName!=[])
+      {
+             let tourdata = [];  
+             let uniqueObject = {};
+          
+             for (let i in tourName) {
+                let objTitle = tourName[i]['name'];
+                 uniqueObject[objTitle] = tourName[i];
+             }
+             
+             for ( let i in uniqueObject) {
+              var matchdata=[]
+              for(let j in response.data.data.events) {
+                if(response.data.data.events[j].tournament.name == uniqueObject[i].name && 
+                  response.data.data.events[j].tournament.category.id==uniqueObject[i].category.id)
+                   { matchdata.push(response.data.data.events[j])}
+                }
+              tourdata.push({tourdata:uniqueObject[i],matchdata})
+             }
+             setManagerEvents(tourdata)
+             setIsLoading(false)
+           }
+
+      
+      
+    }   
+      
+      
+  }).catch(function (error) {
+    console.error(error);
+  });
+};
+
+
 // const getteamdata = (id,Sid,type) => {
 //   const options = {
 //     method: 'GET',
@@ -765,6 +817,7 @@ const getEventDataById= (id) => {
   return (
     <ApiContext.Provider
       value={{
+        getManagerEvents,
         getPlayerdatabyId,
         MemberVerification,
         getcategories,
@@ -790,6 +843,7 @@ const getEventDataById= (id) => {
         getseasonlistbytourId,
         getEventDataById,
 
+        managerEvents,
         Eventdata,
         SeasonList,
         TitleData,

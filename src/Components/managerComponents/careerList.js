@@ -8,7 +8,7 @@ const careerList= ({data}) => {
   return (
    
     <li>
-<a href="player.php" className=" d-block py-2 px-3 hover-bg-gray linkstyle" >
+<a  className=" d-block py-2 px-3 hover-bg-gray linkstyle" >
     <div className="d-flex gap-2">
         <img src={"https://api.sofascore.app/api/v1/team/"+data.team.id+"/image"} alt="" style={{width: '45px'}}/>
         <div className=" flex-1">

@@ -37,6 +37,8 @@ const team = () => {
             getteamEvent(Tid)
                }, [Tid]);      
 
+               console.log(teamEventData);
+
     let flagUrl=""
     if(teamCountry.alpha2!=undefined&& teamCountry.alpha2!= null)
     {
@@ -53,8 +55,8 @@ const team = () => {
   return (
     <div>
       <div className="py-9 padding-inline-2vw padding-inline-lg-10vw bg-dark">
-        <div className="row justify-content-between gap-4">
-            <div className="col-lg-6">
+        <div className="row justify-content-between ">
+            <div className="col-lg-7">
                 <div className="d-flex align-items-center justify-content-center justify-content-lg-start gap-4 gap-lg-12 flex-wrap ">
                     <div className="border-0 border-1 border-primary border-top border-bottom p-3"
                      style={{"width":"135px","-bsBorderWidth":"3px","background":"#202020","transform":"skewX(-10deg)"}}>
@@ -136,24 +138,24 @@ const team = () => {
                         </li>
                     </ul>
                 </div>
-                <div className="mt-8">
+                {/* <div className="mt-8">
                     <h5 className=" MetaLinkBold font-16px m-0">Recent Form</h5>
                     <span className=" font-12px opacity-5 mb-2 d-block">Hover over the form graph to see event details.</span>
                     <img src={require('../images/chart4.png')} alt=""/>
-                </div>
+                </div> */}
             </div>
             <div className="col-lg-6">
                 {/* <!--######################################### 
                                 Start Season statistics
                       ##########################################--> */}
-                  <SeasonsStatistics key={Math.random()}  TeamSeasonStanding={teamSeasonStanding}/>
+                  {/* <SeasonsStatistics key={Math.random()}  TeamSeasonStanding={teamSeasonStanding}/> */}
                 <div className="mt-6">
                     {/* <!--######################################### 
                                    Start Latest Transfers
                       ##########################################--> */}
-                    <h5 className=" MetaLinkBold font-16px mb-3">Latest Transfers</h5>
+                    {/* <h5 className=" MetaLinkBold font-16px mb-3">Latest Transfers</h5>
                     <LatestTransfer key={Math.random()} />
-                    <hr/>
+                    <hr/> */}
                     {/* <!--######################################### 
                                    Start Tournaments
                       ##########################################--> */}
@@ -197,10 +199,10 @@ const team = () => {
             <div className="row g-0">
         
                 <div className="col-md-6 border-end">
-                    <ul className="d-flex align-items-center justify-content-between border-bottom py-2 px-3 mb-3">
+                    {/* <ul className="d-flex align-items-center justify-content-between border-bottom py-2 px-3 mb-3">
                         <li><a href="#" className=" text-uppercase font-12px btn btn-outline-info py-2 lh-1" style={{"-bsBtnHoverColor":"white"}}><i className="bi bi-chevron-left lh-1 font-16px"></i> previours</a></li>
                         <li><a href="#" className=" text-uppercase font-12px btn btn-outline-info py-2 lh-1" style={{"-bsBtnHoverColor":"white"}}>next <i className="bi bi-chevron-right lh-1 font-16px"></i></a></li>
-                    </ul>
+                    </ul> */}
              <div className=" overflow-auto" style={{maxHeight:"750px"}}>   
              {teamEventData.map((data, index) => (
             <Matchedetails key={index}  data={data} />

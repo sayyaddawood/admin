@@ -12,7 +12,6 @@ const matchList= () => {
         alt="" className=" rounded-circle" style={{width: '24px'}}/>
         <div>
             <a href="#" className=" font-12px opacity-5 text-dark d-block link-info lh-1">Premier League</a>
-            <span className="MetaLinkSemiBold font-12px ms-auto text-success d-block">Sofascore ratings</span>
         </div>
     
     </div>
