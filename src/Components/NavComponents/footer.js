@@ -8,7 +8,7 @@ const footer = () => {
  <footer className="bg-dark">
   <div className="pt-6 pb-5 pb-lg-10 padding-inline-2vw padding-inline-lg-10vw ">
     <div className="text-center">
-      <img src="assets/assets/images/logo.jpg" alt="" className=" mx-auto mb-8 footerImg" />
+      <img src="../assets/assets/images/logo.jpg" alt="" className=" mx-auto mb-8 footerImg" />
     </div>
     <div className="row justify-content-between gap-4">
       <div className="col-lg-4">

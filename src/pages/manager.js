@@ -8,7 +8,6 @@ import MatchList from '../Components/managerComponents/matchList'
 import Matchdetail from '../Components/managerComponents/matchdetail'
 import { useLocation, useParams } from 'react-router-dom';
 import { getAge } from '../UserComponents/Common';
-import Matchedetails from '../Components/teamComponents/matchDetail';
 
 const manager = () => {
 
@@ -146,7 +145,7 @@ const imageStyle = {
                         <div className="col-md-6 border-end">
                           
                         {managerEvents.map((data, index) => (
-            <Matchedetails key={index}  data={data} />
+            <MatchList key={index}  data={data} />
                  ))} 
 
                          

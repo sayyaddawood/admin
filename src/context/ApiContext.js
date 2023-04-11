@@ -254,10 +254,6 @@ const options = {
    }
 
   const getTournament = (currentDate) => {
-    if(currentDate==undefined || currentDate=="")
-    {
-     currentDate = new Date().toJSON().slice(0, 10);
-     }
     const options = {
       method: 'GET',
       url: BASE_URL+'events/schedule/date',

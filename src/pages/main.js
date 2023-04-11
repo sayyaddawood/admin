@@ -1,4 +1,6 @@
 import React, { useContext,useState,useEffect } from 'react'
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 import './style/main.css';
 import AllLeaguesList from'../Components/mainComponent/allLeaguesList';
 import CountrylistCup from'../Components/mainComponent/countrylistCup';
@@ -9,28 +11,23 @@ import ItemList from '../Components/mainComponent/listitem';
 import { ApiContext } from '../context/ApiContext'
 
 const Main= () => {
-    const [selectedDate, setSelectedDate] = useState("");
-    const [todaydate, onDateChange] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
   
     const {categorieslist,tournamentdata,getTournament,getTopLegue,getcategories} = useContext(ApiContext);
     useEffect(() => {
         getcategories()
-        getTournament(selectedDate)
+        getTournament(new Date(selectedDate).toJSON().slice(0, 10))
         getTopLegue()
           }, []);  
      const [showResults, setShowResults] = React.useState(false)
           const onClick = (e) => {
               setShowResults(e.target.checked)
           }    
-
-        //   function onDateChange(){
-        //     getTournament(todaydate)
-        //   }
         
-          function handleInputChange(event) {
-           setSelectedDate(event.target.value)
-            getTournament(event.target.value)
-          }        
+          function handleInputChange() {
+            getTournament(new Date(selectedDate).toJSON().slice(0, 10))
+          }
+                  
 
   return (
     
@@ -72,9 +69,7 @@ const Main= () => {
         </div>
         <div className="col-lg-3 d-none d-lg-block">
         <div className="mb-4">
-        
-        {/* <input type="text" class="selectDate border-0" /> */}
-                <input type="date" value={selectedDate}  onChange={handleInputChange} className="selectDate border-0"/>
+        <Calendar className="selectDate border-0" onChange={handleInputChange} value={selectedDate} />
             </div>
           
             <TopLeagues  key={Math.random()}/>
